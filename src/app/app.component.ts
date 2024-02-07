@@ -49,10 +49,10 @@ export class AppComponent {
     });
 
     const uniqueYears = Object.keys(groups).filter(year => groups[year].length === 1);
+
     const commonYears = Object.keys(groups).filter(year => groups[year].length > 1);
 
     this.groupedData['unique years'] = uniqueYears.flatMap(year => groups[year]);
-
 
     commonYears.forEach(year => {
       this.groupedData[year] = groups[year];
