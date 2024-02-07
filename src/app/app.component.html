@@ -1,0 +1,36 @@
+<div style="display: flex; justify-content: center; align-items: center;">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let key of groupKeys">
+      <ng-container *ngIf="key !== 'unique years'">
+        <tr class="group-header">
+          <td colspan="3">{{ key }}</td>
+        </tr>
+        <tr *ngFor="let row of groupedData[key]" class="data-row">
+          <td>{{ row.date | date }}</td>
+          <td>{{ row.firstName }}</td>
+          <td>{{ row.lastName }}</td>
+        </tr>
+      </ng-container>
+    </ng-container>
+    <tr *ngIf="groupedData['unique years'] && groupedData['unique years'].length > 0" class="group-header">
+      <td colspan="3">Unique Years</td>
+    </tr>
+    <tr *ngFor="let row of groupedData['unique years']" class="data-row">
+      <td>{{ row.date | date }}</td>
+      <td>{{ row.firstName }}</td>
+      <td>{{ row.lastName }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
